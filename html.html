@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .container{
+            margin-top:10% ;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            
+        }
+       
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            padding: 8px;
+            width: 200px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100px;
+            border-radius: 15px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Certificate Verification</h1>
+    <label for="certificateID">Enter Certificate ID:</label>
+    <input type="text" id="certificateID" placeholder="e.g., ABC123">
+    <label for="customID">Enter Custom ID:</label>
+    <input type="text" id="customID" placeholder="e.g., User123">
+    <button onclick="verifyCertificate()">Verify</button>
+    <div id="result"></div>
+    </div>
+
+    <script>
+        function verifyCertificate() {
+            var certificateID = document.getElementById("certificateID").value;
+            var customID = document.getElementById("customID").value;
+            var validCertificates = {"ABC123": "User123", "XYZ789": "User456"}; // Map valid certificate IDs to custom IDs
+
+            if (validCertificates.hasOwnProperty(certificateID) && validCertificates[certificateID] === customID) {
+                document.getElementById("result").innerHTML = "Certificate is valid!";
+            } else {
+                document.getElementById("result").innerHTML = "Invalid certificate or custom ID. Please try again.";
+            }
+        }
+    </script>
+</body>
+</html>
+
